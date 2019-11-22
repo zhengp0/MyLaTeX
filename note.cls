@@ -7,7 +7,7 @@
 % -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{note}[06/02/2019, v0.01]
-\LoadClass[10pt]{extarticle}
+\LoadClass[9pt]{extarticle}
 
 % Fonts and languages
 % -----------------------------------------------------------------------------
@@ -15,9 +15,11 @@
 \RequirePackage[english]{babel}
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{lmodern}
-\RequirePackage[scaled]{helvet}
-\RequirePackage[T1]{fontenc}
 \RequirePackage{lettrine}
+\usepackage{fontspec}
+\setmainfont{SF Pro Display Light}
+\setmonofont{SF Mono Light}[Scale=0.8]
+\setsansfont{Charter}
 
 % Colors
 % -----------------------------------------------------------------------------
@@ -43,9 +45,9 @@
 % -----------------------------------------------------------------------------
 \newcommand{\titlefont}{\normalfont\sffamily\bfseries\fontsize{18pt}{20pt}
                         \selectfont}
-\newcommand{\authorfont}{\normalfont\sffamily\bfseries\fontsize{8}{11}\selectfont}
-\newcommand{\datefont}{\normalfont\sffamily\fontsize{7}{8}\selectfont}
-\newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{8}{11}\selectfont}
+\newcommand{\authorfont}{\normalfont\bfseries\fontsize{8}{11}\selectfont}
+\newcommand{\datefont}{\normalfont\fontsize{7}{8}\selectfont}
+\newcommand{\absfont}{\normalfont\bfseries\fontsize{8}{11}\selectfont}
 \newcommand{\keywordsfont}{\normalfont\rmfamily\fontsize{7}{10}\selectfont}
 \newcommand{\copyrightfont}{\normalfont\rmfamily\fontsize{6}{8}\selectfont}
 
@@ -75,26 +77,26 @@
   {0em}
   {#1}
   []  
-\titleformat{\subsection}[runin]
+\titleformat{\subsection}
   {\large\sffamily\bfseries}
   {\thesubsection.}
   {0.5em}
-  {#1. }
+  {#1 }
   []
-\titleformat{\subsubsection}[runin]
+\titleformat{\subsubsection}
   {\large\sffamily\bfseries\itshape}
   {\thesubsubsection.}
   {0.5em}
-  {#1. }
+  {#1 }
   []    
 \titleformat{\paragraph}[runin]
   {\large\sffamily\bfseries}
   {}
   {0em}
-  {#1}
+  {#1.}
 \titlespacing*{\section}{0pc}{4ex \@plus4pt \@minus3pt}{5pt}
-\titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{2pt}
-\titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{2pt}
+\titlespacing*{\subsection}{0pc}{1.5ex \@plus3pt \@minus2pt}{2pt}
+\titlespacing*{\subsubsection}{0pc}{1.5ex \@plus2.5pt \@minus1.5pt}{2pt}
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
 \setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.2}
@@ -106,12 +108,17 @@
 \setlist{nosep}
 
 
+% Programming Codes
+% -----------------------------------------------------------------------------
+\RequirePackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true}
+
 % Figures
 % -----------------------------------------------------------------------------
 \RequirePackage{graphicx}
 \RequirePackage[labelfont={bf,sf},
                 labelsep=period]{caption}
-\DeclareCaptionFormat{noteformat}{\normalfont\sffamily\fontsize{7}{9}
+\DeclareCaptionFormat{noteformat}{\normalfont\fontsize{7}{9}
                                   \selectfont#1#2#3}
 \captionsetup*{format=noteformat}
 
@@ -129,7 +136,7 @@
 \setlength{\aboverulesep}{1.5pt}
 \setlength{\belowrulesep}{1.5pt}
 \setlength{\belowbottomsep}{10pt}
-\AtBeginEnvironment{tabular}{\sffamily\fontsize{7.5}{10}\selectfont}
+\AtBeginEnvironment{tabular}{\fontsize{7.5}{10}\selectfont}
 \newcommand{\addtabletext}[1]{{\setlength{\leftskip}{9pt}\fontsize{7}{9}
                                \selectfont#1}}
 
@@ -143,7 +150,8 @@
 % Hyperlink
 % -----------------------------------------------------------------------------
 \RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
-\renewcommand\UrlFont{\color{blue}\sffamily}
+\renewcommand\UrlFont{\color{blue}}
+\urlstyle{tt}
 
 
 % Bibliography
