@@ -51,11 +51,7 @@
 
 \renewcommand{\@maketitle}{
   {\raggedright\baselineskip=18pt \titlefont \@title\par}
-  \vskip10pt
-  {\raggedright \authorfont \@author\par}
-  \vskip8pt
-  {\raggedright \datefont \@date\par}
-  \vskip12pt
+  \vskip20pt
 }
 
 
@@ -80,19 +76,19 @@
   {#1}
   []  
 \titleformat{\subsection}[runin]
-  {\sffamily\bfseries}
+  {\large\sffamily\bfseries}
   {\thesubsection.}
   {0.5em}
   {#1. }
   []
 \titleformat{\subsubsection}[runin]
-  {\sffamily\small\bfseries\itshape}
+  {\large\sffamily\bfseries\itshape}
   {\thesubsubsection.}
   {0.5em}
   {#1. }
   []    
 \titleformat{\paragraph}[runin]
-  {\sffamily\small\bfseries}
+  {\large\sffamily\bfseries}
   {}
   {0em}
   {#1}
@@ -100,6 +96,14 @@
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{2pt}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{2pt}
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
+
+
+% Lists
+% -----------------------------------------------------------------------------
+\RequirePackage{enumitem}
+\setlist{nosep}
 
 
 % Figures
