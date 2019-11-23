@@ -17,13 +17,14 @@
 \RequirePackage{lmodern}
 \RequirePackage{lettrine}
 \usepackage{fontspec}
-\setmainfont{SF Pro Display Light}
+\setmainfont{SF Pro Text Light}
 \setmonofont{SF Mono Light}[Scale=0.8]
 \setsansfont{Charter}
 
 % Colors
 % -----------------------------------------------------------------------------
 \RequirePackage{xcolor}
+\definecolor{important}{HTML}{3A4660}
 
 
 % Page format
@@ -31,7 +32,7 @@
 \RequirePackage[a4paper,
                 includeheadfoot,%
                 layoutsize={8.125in,10.875in},%
-                layouthoffset=0.1875in,%
+                layouthoffset=0in,%
                 layoutvoffset=0.0625in,%
                 left=70pt,%
                 right=70pt,%
@@ -52,8 +53,10 @@
 \newcommand{\copyrightfont}{\normalfont\rmfamily\fontsize{6}{8}\selectfont}
 
 \renewcommand{\@maketitle}{
-  {\raggedright\baselineskip=18pt \titlefont \@title\par}
-  \vskip20pt
+  {\color{important}\raggedright\baselineskip=18pt \titlefont \@title\par}
+  \vskip 2pt
+  {\color{gray}\hrule}
+  \vskip18pt
 }
 
 
@@ -66,31 +69,31 @@
 \RequirePackage[explicit]{titlesec}
 
 \titleformat{\section}
-  {\Large\sffamily\bfseries}
+  {\color{important}\LARGE\sffamily\bfseries}
   {\thesection.}
   {0.5em}
   {#1}
   []
 \titleformat{name=\section,numberless}
-  {\Large\sffamily\bfseries}
+  {\color{important}\LARGE\sffamily\bfseries}
   {}
   {0em}
   {#1}
   []  
 \titleformat{\subsection}
-  {\large\sffamily\bfseries}
+  {\color{important}\Large\sffamily\bfseries}
   {\thesubsection.}
   {0.5em}
   {#1 }
   []
 \titleformat{\subsubsection}
-  {\large\sffamily\bfseries\itshape}
+  {\color{important}\Large\sffamily\bfseries\itshape}
   {\thesubsubsection.}
   {0.5em}
   {#1 }
   []    
 \titleformat{\paragraph}[runin]
-  {\large\sffamily\bfseries}
+  {\color{important}\large\sffamily\bfseries}
   {}
   {0em}
   {#1.}
@@ -100,6 +103,7 @@
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
 \setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.2}
+\newcommand{\bigletter}[1]{\lettrine[lines=2]{\sffamily#1}{}}
 
 
 % Lists
