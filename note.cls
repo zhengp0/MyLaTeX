@@ -7,7 +7,7 @@
 % -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{note}[06/02/2019, v0.01]
-\LoadClass[9pt]{extarticle}
+\LoadClass[10pt]{extarticle}
 
 % Fonts and languages
 % -----------------------------------------------------------------------------
@@ -17,7 +17,7 @@
 \RequirePackage{lmodern}
 \RequirePackage{lettrine}
 \usepackage{fontspec}
-\setmainfont{SF Pro Text Light}
+\setmainfont{SF Pro Text Light}[Scale=0.8]
 \setmonofont{SF Mono Light}[Scale=0.8]
 \setsansfont{Charter}
 
@@ -25,6 +25,7 @@
 % -----------------------------------------------------------------------------
 \RequirePackage{xcolor}
 \definecolor{important}{HTML}{3A4660}
+\definecolor{link}{HTML}{368BC1}
 
 
 % Page format
@@ -69,31 +70,31 @@
 \RequirePackage[explicit]{titlesec}
 
 \titleformat{\section}
-  {\color{important}\LARGE\sffamily\bfseries}
+  {\color{important}\sffamily\bfseries\fontsize{14pt}{14pt}\selectfont}
   {\thesection.}
   {0.5em}
   {#1}
   []
 \titleformat{name=\section,numberless}
-  {\color{important}\LARGE\sffamily\bfseries}
+  {\color{important}\sffamily\bfseries\fontsize{14pt}{14pt}\selectfont}
   {}
   {0em}
   {#1}
   []  
 \titleformat{\subsection}
-  {\color{important}\Large\sffamily\bfseries}
+  {\color{important}\sffamily\bfseries\fontsize{11pt}{11pt}\selectfont}
   {\thesubsection.}
   {0.5em}
   {#1 }
   []
 \titleformat{\subsubsection}
-  {\color{important}\Large\sffamily\bfseries\itshape}
+  {\color{important}\sffamily\bfseries\itshape\fontsize{10pt}{10pt}\selectfont}
   {\thesubsubsection.}
   {0.5em}
   {#1 }
   []    
 \titleformat{\paragraph}[runin]
-  {\color{important}\large\sffamily\bfseries}
+  {\color{important}\sffamily\bfseries\fontsize{10pt}{10pt}\selectfont}
   {}
   {0em}
   {#1.}
@@ -103,7 +104,7 @@
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
 \setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.2}
-\newcommand{\bigletter}[1]{\lettrine[lines=2]{\sffamily#1}{}}
+\newcommand{\bigletter}[1]{\lettrine[lines=2]{\fcolorbox{gray}{white}{\bfseries#1}}{\hskip4pt}}
 
 
 % Lists
@@ -153,8 +154,8 @@
 
 % Hyperlink
 % -----------------------------------------------------------------------------
-\RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
-\renewcommand\UrlFont{\color{blue}}
+\RequirePackage[colorlinks=true, allcolors=link]{hyperref}
+\renewcommand\UrlFont{\color{link}}
 \urlstyle{tt}
 
 
