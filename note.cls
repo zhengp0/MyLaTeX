@@ -7,19 +7,20 @@
 % -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{note}[06/02/2019, v0.01]
-\LoadClass[10pt]{extarticle}
+\LoadClass[9pt]{extarticle}
 
 % Fonts and languages
 % -----------------------------------------------------------------------------
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english]{babel}
-\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{amsmath,amsfonts,amssymb, amsthm}
 \RequirePackage{lmodern}
 \RequirePackage{lettrine}
 \usepackage{fontspec}
-\setmainfont{SF Pro Text Light}[Scale=0.8]
-\setmonofont{SF Mono Light}[Scale=0.8]
-\setsansfont{Charter}
+% \setmainfont{Helvetica Neue Light}
+\setmainfont{SF Pro Text Light}
+\setmonofont{SF Mono Light}
+\setsansfont{New York Large}
 
 % Colors
 % -----------------------------------------------------------------------------
@@ -103,14 +104,20 @@
 \titlespacing*{\subsubsection}{0pc}{1.5ex \@plus2.5pt \@minus1.5pt}{2pt}
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
 \setlength{\parskip}{1em}
-\renewcommand{\baselinestretch}{1.2}
-\newcommand{\bigletter}[1]{\lettrine[lines=2]{\fcolorbox{gray}{white}{\bfseries#1}}{\hskip4pt}}
+\renewcommand{\baselinestretch}{1.4}
+\newcommand{\bigletter}[1]{\lettrine[lines=2]{\fcolorbox{gray}{white}{\bfseries#1}}{\hskip5pt}}
 
 
 % Lists
 % -----------------------------------------------------------------------------
 \RequirePackage{enumitem}
 \setlist{nosep}
+\renewcommand{\labelitemi}{\huge\textbullet}
+\renewcommand{\labelitemii}{--}
+\setenumerate{align=left,
+              labelwidth=\parindent,
+              leftmargin=\parindent,
+              labelsep=0pt}
 
 
 % Programming Codes
@@ -126,6 +133,7 @@
 \DeclareCaptionFormat{noteformat}{\normalfont\fontsize{7}{9}
                                   \selectfont#1#2#3}
 \captionsetup*{format=noteformat}
+\RequirePackage{subcaption}
 
 
 % Tables
@@ -161,7 +169,7 @@
 
 % Bibliography
 % -----------------------------------------------------------------------------
-
+\def\bibfont{\small}
 
 % Math operations
 % -----------------------------------------------------------------------------
