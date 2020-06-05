@@ -7,21 +7,26 @@
 % -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{note}[06/02/2019, v0.01]
-\LoadClass[10pt]{extarticle}
+\LoadClass[9pt]{extarticle}
 
 % Fonts and languages
 % -----------------------------------------------------------------------------
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english]{babel}
-\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{amsmath,amsfonts,amssymb, amsthm}
 \RequirePackage{lmodern}
-\RequirePackage[scaled]{helvet}
-\RequirePackage[T1]{fontenc}
 \RequirePackage{lettrine}
+\usepackage{fontspec}
+% \setmainfont{Helvetica Neue Light}
+\setmainfont{SF Pro Text Light}
+\setmonofont{SF Mono Light}
+\setsansfont{New York Large}
 
 % Colors
 % -----------------------------------------------------------------------------
 \RequirePackage{xcolor}
+\definecolor{important}{HTML}{3A4660}
+\definecolor{link}{HTML}{368BC1}
 
 
 % Page format
@@ -29,7 +34,7 @@
 \RequirePackage[a4paper,
                 includeheadfoot,%
                 layoutsize={8.125in,10.875in},%
-                layouthoffset=0.1875in,%
+                layouthoffset=0in,%
                 layoutvoffset=0.0625in,%
                 left=70pt,%
                 right=70pt,%
@@ -43,15 +48,17 @@
 % -----------------------------------------------------------------------------
 \newcommand{\titlefont}{\normalfont\sffamily\bfseries\fontsize{18pt}{20pt}
                         \selectfont}
-\newcommand{\authorfont}{\normalfont\sffamily\bfseries\fontsize{8}{11}\selectfont}
-\newcommand{\datefont}{\normalfont\sffamily\fontsize{7}{8}\selectfont}
-\newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{8}{11}\selectfont}
+\newcommand{\authorfont}{\normalfont\bfseries\fontsize{8}{11}\selectfont}
+\newcommand{\datefont}{\normalfont\fontsize{7}{8}\selectfont}
+\newcommand{\absfont}{\normalfont\bfseries\fontsize{8}{11}\selectfont}
 \newcommand{\keywordsfont}{\normalfont\rmfamily\fontsize{7}{10}\selectfont}
 \newcommand{\copyrightfont}{\normalfont\rmfamily\fontsize{6}{8}\selectfont}
 
 \renewcommand{\@maketitle}{
-  {\raggedright\baselineskip=18pt \titlefont \@title\par}
-  \vskip20pt
+  {\color{important}\raggedright\baselineskip=18pt \titlefont \@title\par}
+  \vskip 2pt
+  {\color{gray}\hrule}
+  \vskip18pt
 }
 
 
@@ -64,56 +71,69 @@
 \RequirePackage[explicit]{titlesec}
 
 \titleformat{\section}
-  {\Large\sffamily\bfseries}
+  {\color{important}\sffamily\bfseries\fontsize{14pt}{14pt}\selectfont}
   {\thesection.}
   {0.5em}
   {#1}
   []
 \titleformat{name=\section,numberless}
-  {\Large\sffamily\bfseries}
+  {\color{important}\sffamily\bfseries\fontsize{14pt}{14pt}\selectfont}
   {}
   {0em}
   {#1}
   []  
-\titleformat{\subsection}[runin]
-  {\large\sffamily\bfseries}
+\titleformat{\subsection}
+  {\color{important}\sffamily\bfseries\fontsize{11pt}{11pt}\selectfont}
   {\thesubsection.}
   {0.5em}
-  {#1. }
+  {#1 }
   []
-\titleformat{\subsubsection}[runin]
-  {\large\sffamily\bfseries\itshape}
+\titleformat{\subsubsection}
+  {\color{important}\sffamily\bfseries\itshape\fontsize{10pt}{10pt}\selectfont}
   {\thesubsubsection.}
   {0.5em}
-  {#1. }
+  {#1 }
   []    
 \titleformat{\paragraph}[runin]
-  {\large\sffamily\bfseries}
+  {\color{important}\sffamily\bfseries\fontsize{10pt}{10pt}\selectfont}
   {}
   {0em}
-  {#1}
+  {#1.}
 \titlespacing*{\section}{0pc}{4ex \@plus4pt \@minus3pt}{5pt}
-\titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{2pt}
-\titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{2pt}
+\titlespacing*{\subsection}{0pc}{1.5ex \@plus3pt \@minus2pt}{2pt}
+\titlespacing*{\subsubsection}{0pc}{1.5ex \@plus2.5pt \@minus1.5pt}{2pt}
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
 \setlength{\parskip}{1em}
-\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\baselinestretch}{1.4}
+\newcommand{\bigletter}[1]{\lettrine[lines=2]{\fcolorbox{gray}{white}{\bfseries#1}}{\hskip5pt}}
 
 
 % Lists
 % -----------------------------------------------------------------------------
 \RequirePackage{enumitem}
 \setlist{nosep}
+\renewcommand{\labelitemi}{\huge\textbullet}
+\renewcommand{\labelitemii}{--}
+\setenumerate{align=left,
+              labelwidth=\parindent,
+              leftmargin=\parindent,
+              labelsep=0pt}
 
+
+% Programming Codes
+% -----------------------------------------------------------------------------
+\RequirePackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true}
 
 % Figures
 % -----------------------------------------------------------------------------
 \RequirePackage{graphicx}
 \RequirePackage[labelfont={bf,sf},
                 labelsep=period]{caption}
-\DeclareCaptionFormat{noteformat}{\normalfont\sffamily\fontsize{7}{9}
+\DeclareCaptionFormat{noteformat}{\normalfont\fontsize{7}{9}
                                   \selectfont#1#2#3}
 \captionsetup*{format=noteformat}
+\RequirePackage{subcaption}
 
 
 % Tables
@@ -129,7 +149,7 @@
 \setlength{\aboverulesep}{1.5pt}
 \setlength{\belowrulesep}{1.5pt}
 \setlength{\belowbottomsep}{10pt}
-\AtBeginEnvironment{tabular}{\sffamily\fontsize{7.5}{10}\selectfont}
+\AtBeginEnvironment{tabular}{\fontsize{7.5}{10}\selectfont}
 \newcommand{\addtabletext}[1]{{\setlength{\leftskip}{9pt}\fontsize{7}{9}
                                \selectfont#1}}
 
@@ -142,13 +162,14 @@
 
 % Hyperlink
 % -----------------------------------------------------------------------------
-\RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
-\renewcommand\UrlFont{\color{blue}\sffamily}
+\RequirePackage[colorlinks=true, allcolors=link]{hyperref}
+\renewcommand\UrlFont{\color{link}}
+\urlstyle{tt}
 
 
 % Bibliography
 % -----------------------------------------------------------------------------
-
+\def\bibfont{\small}
 
 % Math operations
 % -----------------------------------------------------------------------------
