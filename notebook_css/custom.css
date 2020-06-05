@@ -1,0 +1,143 @@
+/* container settings */
+#notebook-container{
+    box-shadow: none !important;
+}
+
+.container {
+    width: 80% !important;
+}
+
+/* change the code front */
+.CodeMirror {
+    font-family: SF Mono, monospace;
+    font-size: 9pt;
+    font-weight: "normal";
+    line-height: 1.5;
+}
+
+/* input and output area */
+div.input_area {
+    border: none;
+    border-radius: 5px;
+    background: #f7f7f7;
+    line-height: 1.5em;
+    margin: 0.5em 0;
+    padding: 0.5em;
+}
+
+div.output_area pre {
+    font-family: SF Mono, monospace;
+    font-size: 9pt;
+}
+
+/* cell selection */
+div.cell {
+    transition: all 0.25s;
+    border: none;
+    position: relative;
+    top: 0;
+}
+
+div.cell.selected, div.cell.selected.jupyter-soft-selected {
+    border: none;
+    background: transparent;
+    box-shadow: 0 6px 18px #aaa;
+    z-index: 10;
+    /*top: -10px;*/
+    top: 0px;
+}
+
+/* prompt */
+div.input_prompt {
+    font-family: SF Mono, monospace;
+    font-size: 9pt;
+    color: #48585D;
+    position: relative;
+    top: 1.28em;
+}
+
+div.output_prompt {
+    font-family: SF Mono, monospace;
+    font-size: 9pt;
+    color: #f92672;
+    position: relative;
+    top: 0.22em;
+}
+
+/* color scheme */
+.cm-s-ipython .CodeMirror-cursor {
+ border-left: 2px solid #0095ff !important;
+}
+.cm-s-ipython span.cm-comment {
+ color: #8d8d8d;
+ font-style: normal;
+}
+.cm-s-ipython span.cm-atom {
+ /*color: #ae81ff;*/
+ color: #8A2BE2;
+}
+.cm-s-ipython span.cm-number {
+ /*color: #ae81ff;*/
+ color: #8A2BE2;
+}
+.cm-s-ipython span.cm-property {
+ /*color: #f8f8f0;*/
+ color: #48585D;
+}
+.cm-s-ipython span.cm-attribute {
+ /*color: #f8f8f0;*/
+ color: #48585D;
+}
+.cm-s-ipython span.cm-keyword {
+ color: #f92672;
+ font-weight: normal;
+}
+.cm-s-ipython span.cm-string {
+ /*color: #e6db74;*/
+ color: #008c55;
+}
+.cm-s-ipython span.cm-meta {
+ color: #fd971f;
+}
+.cm-s-ipython span.cm-operator {
+ /*color: #a6e22e;*/
+ color: #f92672;
+}
+.cm-s-ipython span.cm-builtin {
+ /*color: #a6e22e;*/
+ color: #fd971f;
+}
+.cm-s-ipython span.cm-variable {
+ /*color: #f8f8f0;*/
+ color: #48585D;
+}
+.cm-s-ipython span.cm-variable-2 {
+ /*color: #a6e22e;*/
+ color: #fd971f;
+}
+.cm-s-ipython span.cm-variable-3 {
+ color: #fd971f;
+}
+.cm-s-ipython span.cm-def {
+ /*color: #a6e22e;*/
+ color: #008ECC;
+ font-weight: normal;
+}
+.cm-s-ipython span.cm-error {
+ background: rgba(249,38,114,.4);
+}
+.cm-s-ipython span.cm-tag {
+ color: #ae81ff;
+}
+.cm-s-ipython span.cm-link {
+ color: #a6e22e;
+}
+.cm-s-ipython span.cm-storage {
+ color: #ae81ff;
+}
+.cm-s-ipython span.cm-entity {
+ color: #a6e22e;
+}
+.cm-s-ipython span.cm-quote {
+ color: #e6db74;
+}
